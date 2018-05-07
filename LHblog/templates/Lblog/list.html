@@ -1,0 +1,36 @@
+{% extends 'Lblog/base.html' %}
+{% load static from staticfiles %}
+
+{% block art_list  %}
+
+
+            <div class="primary col-md-8 col-sm-12 col-xs-12">
+               
+
+                <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
+
+                <section class="projects section">
+                    <div class="section-inner">
+                        <h2 class="heading">{% if  cates %}{{ cates.name }}{% else %}{{ year }}年{{ month }}月{% endif %}</h2>
+                        <div class="content">
+                            {% for article in article_list %}
+                                <hr>
+                            <div class="item">
+                                <h3 class="title"><a href="{{ article.get_pk_url }}">{{ article.title}}</a> <span class="label label-theme">{{ article.category.name }}{{ article.tags.name }}</span></h3>
+                                <p class="summary">{{ article.excerpt}}</p>
+                                <p style="color:#8B8386"><span><i class="fa fa-comments"></i> 4</span> &nbsp <span><i class="fa fa-eye"></i> {{ article.views }}</span>&nbsp &nbsp &nbsp  <span><i class="fa fa-calendar"></i> {{ article.create_time |date:"Y-m-d H:i:s"}}</span></p>
+                            </div><!--//item-->
+
+                                {% empty %}
+                                没有文章
+                            {% endfor %}
+
+
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
+                </section><!--//section-->
+
+
+            </div><!--//primary-->
+
+{% endblock %}

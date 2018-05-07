@@ -1,0 +1,61 @@
+{% extends 'Lblog/base.html' %}
+{% load staticfiles%}
+{% block art_list %}
+    <div class="primary col-md-8 col-sm-12 col-xs-12">
+
+                <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
+
+                <section class="projects section">
+                    <div class="section-inner">
+                        <h2 class="heading">《{{ article.title }}》</h2>
+                        <p style="color:#8B8386"><span><i class="fa fa-comments"></i> 4</span> &nbsp <span><i class="fa fa-eye"></i> {{ article.views }}</span>&nbsp &nbsp &nbsp  <span><i class="fa fa-calendar"></i> {{ article.create_time | date:"Y-m-d H:i:s"}}</span></p>
+                        <div class="content">
+                            <p>
+
+                                {{ article.content | safe }}
+
+                           </p>
+
+
+                        </div><!--//content-->
+                        <div class="commit">
+
+                            <form role="form">
+                              <div class="form-group">
+                              <br/>
+                                <label for="name">评论</label>
+                                <textarea class="form-control" rows="3"></textarea>
+                              </div>
+                              <a class="btn btn-cta-secondary" href="#">发 表</a>
+                            </form>
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="commit-list">
+                        <ul class="list-group">
+                            <li class="list-group-item active" >评论列表</li>
+                            <li class="list-group-item" style="height:100%">
+                                <img src="assets/images/profile.png" style="width:50px;height:50px;margin:5px;" class="img-circle">
+                                <span style="float:right;margin-right:630px;margin-top:10px;color:#9E9D9D">moumou<p style="font-size:10px"><i class="fa fa-calendar"></i> 2018-12-09</p></span>
+
+                                <p style="margin-left:70px">什么鬼啊？我在测试哦</p>
+                                <br>
+                               <ul style="height:100%">
+                                <li class="list-group-item" >
+                                <img src="assets/images/profile.png" style="width:50px;height:50px;margin:5px;" class="img-circle">
+
+                                <span style="color:#9E9D9D">jiji<hr style="padding:10px;margin:0px"><p style="color:black;margin-left:60px">什么意思</p></span>
+                                </li>
+
+                               </ul>
+                            </li>
+
+                        </ul>
+
+                        </div>
+                    </div><!--//section-inner-->
+                </section><!--//section-->
+
+
+            </div><!--//primary-->
+{% endblock art_list %}

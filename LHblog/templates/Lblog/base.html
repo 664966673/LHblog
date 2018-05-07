@@ -1,0 +1,197 @@
+{% load static from staticfiles %}
+{% load blog_tag %}
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+    <title>Responsive HTML5 Website Template for Developers | 3rd Wave Media</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Responsive HTML5 Website landing Page for Developers">
+    <meta name="author" content="3rd Wave Media">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='http://fonts.useso.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="{% static  'Lblog/assets/plugins/bootstrap/css/bootstrap.min.css'%}">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="{% static  'Lblog/assets/plugins/font-awesome/css/font-awesome.css'%}">
+    <!-- github acitivity css -->        
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="{% static  'Lblog/assets/css/styles.css'%}">
+    <link id="theme-style" rel="stylesheet" href="{% static  'Lblog/assets/css/code.css'%}">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>  
+  
+        <!-- Latest compiled and minified JavaScript -->  
+
+    
+</head> 
+
+<body>
+    <!-- ******HEADER****** --> 
+    <header class="header">
+        <div class="container">                       
+            
+       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">  
+            <div class="container-fluid" style="width:72%">  
+                <!--header section -->  
+                <div class="navbar-header">  
+                    <button type="button" class="navbar-toggle"   
+                            data-toggle="collapse"   
+                            data-target=".navbar-ex1-collapse">  
+                        <span class="sr-only">Toggle navigation</span>  
+                        <i class="fa fa-bars" style="margin:0px;padding:0px;"></i> 
+                    </button>  
+                    <a class="navbar-brand" href="#"style="font-weight:900" >LH - Blog</a>  
+                </div>  
+                <!-- menu section -->  
+                <div class="collapse navbar-collapse navbar-ex1-collapse">  
+                    <ul class="nav navbar-nav navbar-left">  
+                        <li><a href="{% url 'blog:index' %} ">Home</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="#">Products</a></li>  
+                        <li><a href="#">Blog</a></li>  
+                        <li><a href="#">Support</a></li>  
+                    </ul>  
+                     <form action="" class="navbar-form navbar-right">  
+                    <input type="text" placeholder="搜索" class="form-control">  
+                    <button type="submit" class="btn btn-info btn-search">  
+                        <span class="glyphicon glyphicon-search"></span>  
+                    </button>  
+                </form>  
+                </div>  
+                
+            </div>  
+        </nav>  
+        </div><!--//container-->
+    </header><!--//header-->
+    
+    <div class="container sections-wrapper">
+        <div class="row">
+               {% block art_list  %}
+                {% endblock art_list%}
+            <!--//primary-->
+            <div class="secondary col-md-4 col-sm-12 col-xs-12">
+                 <aside class="info aside section">
+                    <div class="section-inner">
+                        <h2 class="heading sr-only">Basic Information</h2>
+                        <div class="content">
+                            <ul class="list-unstyled">
+                                <li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span>深圳</li>
+                                <li><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#">jameslee@website.com</a></li>
+                                <li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="#">http://www.website.com</a></li>
+                            </ul>
+                        </div><!--//content-->  
+                    </div><!--//section-inner-->                 
+                </aside><!--//aside-->
+               
+                            
+         
+                
+                <aside class="list music aside section">
+                    <div class="section-inner">
+                        <h2 class="heading">分类</h2>
+                        <div class="content">
+                            <ul class="list-unstyled">
+                            {% get_cates as cates %}
+                                {% for cate in cates %}
+                                <li><i class="fa fa-align-left"></i> <a href="{% url 'blog:category' cate.pk %}">{{ cate.name }}</a></li>
+                                    {% empty %}
+                                    暂无标签！
+                                {% endfor %}
+                            </ul>
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
+                </aside><!--//section-->
+
+                   <aside class="list conferences aside section">
+                    <div class="section-inner">
+                        <h2 class="heading">归档</h2>
+                        <div class="content">
+                            <ul class="list-unstyled">
+                                {% get_archive as archive %}
+                                {% for date in archive %}
+                                <li><i class="fa fa-calendar"></i> <a href="{% url 'blog:archive' date.year date.month %}">{{ date.year}}年{{ date.month }}月</a> </li>
+                                {% endfor %}
+                            </ul>
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
+                </aside><!--//section-->
+
+                <aside class="blog aside section">
+                    <div class="section-inner">
+                        <h2 class="heading">标签云</h2>
+                        <div id="rss-feeds" class="content">
+                            {% get_tags as tags %}
+                            {% for tag in tags  %}
+                            <a href="" class="blog-tag"><span class="label label-info" style="font-size: medium">{{ tag.name }}</span></a>
+                                {% empty %}
+                                 暂无标签！
+                            {% endfor %}
+                            
+                            
+
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
+                </aside><!--//section-->
+
+
+                
+                <aside class="credits aside section">
+                    <div class="section-inner">
+                        <h2 class="heading">Credits</h2>
+                        <div class="content">
+                            <ul class="list-unstyled">
+                                <li><a href="http://getbootstrap.com/" target="_blank"><i class="fa fa-external-link"></i> Bootstrap 3.2</a></li>
+                                <li><a href="http://fortawesome.github.io/Font-Awesome/" target="_blank"><i class="fa fa-external-link"></i> FontAwsome 4.1</a></li>
+                                <li><a href="http://jquery.com/" target="_blank"><i class="fa fa-external-link"></i> jQuery</a></li>
+                                <li><a href="http://caseyscarborough.com/projects/github-activity/" target="_blank"><i class="fa fa-external-link"></i> GitHub Activity Stream</a></li>
+                                
+                                <li><a href="https://github.com/sdepold/jquery-rss" target="_blank"><i class="fa fa-external-link"></i> jQuery RSS</a></li>
+                                
+                                <li>Profile image: <a href="https://www.flickr.com/photos/dotbenjamin/2577394151" target="_blank">Ben Smith</a></li>
+                                <li>iPad and iPhone mocks: <a href="https://dribbble.com/perlerar" target="_blank">Regy Perlera</a></li>
+                                
+                            </ul>
+                            
+                            <hr/>
+                            
+                             <p>This responsive HTML5 CSS3 site template is handcrafted by UX designer <a href="https://www.linkedin.com/in/xiaoying" target="_blank">Xiaoying Riley</a> at <a href="#" target="_blank">3rd Wave Media</a> for developers and is <strong>FREE</strong> under the <a class="dotted-link" href="http://creativecommons.org/licenses/by/3.0/" target="_blank">Creative Commons Attribution 3.0 License</a></p>
+                             <p>We will improve or add new features to this template based on users' feedback so follow us on twitter to get notified when a new version is out!</p>
+                            <a class="btn btn-cta-secondary btn-follow" href="https://twitter.com/3rdwave_themes" target="_blank"><i class="fa fa-twitter"></i> Follow us</a>
+                            <a class="btn btn-cta-primary btn-download" href="#website-templates/free-responsive-website-template-for-developers/" target="_blank"><i class="fa fa-download"></i> I want to download</a>
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
+                </aside><!--//section-->
+              
+            </div><!--//secondary-->    
+        </div><!--//row-->
+    </div><!--//masonry-->
+    
+    <!-- ******FOOTER****** --> 
+    <footer class="footer">
+        <div class="container text-center">
+                <small class="copyright">李恒的博客</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+ 
+    <!-- Javascript -->
+
+    <script type="text/javascript" src="{% static  '/Lblog/assets/plugins/bootstrap/js/bootstrap.min.js'%}"></script>
+
+    <!-- github activity plugin -->
+
+
+</body>
+</html> 
+

@@ -1,0 +1,78 @@
+{% extends 'Lblog/base.html' %}
+{% load static from staticfiles %}
+
+{% block art_list  %}
+
+
+            <div class="primary col-md-8 col-sm-12 col-xs-12">
+                <section class="about section">
+                    <div class="section-inner" style="">
+                        <h2 class="heading">About Me</h2>
+                        <hr>
+                        <div class="content">
+                           <div class="container">
+                                <img class="profile-image img-responsive pull-left" src="{% static '/Lblog/assets/images/profile.png' %}" alt="{% static '/Lblog/assets/images/profile.png' %}" style="width:110px;height:110px;margin-top:15px"/>
+                                <div class="profile-content pull-left" style="margin-left:40px">
+                                    <h1 class="name">LH</h1>
+                                    <p class="desc" style="clolo:#B2AEAE">python-web开发</p>
+                                    <ul class="social list-inline">
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-github-alt"></i></a></li>
+                                        <li class="last-item"><a href="#"><i class="fa fa-hacker-news"></i></a></li>
+                                    </ul>
+                                </div><!--//profile-->
+                            </div>
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
+                </section><!--//section-->
+
+               <section class="latest section">
+                    <div class="section-inner">
+                        <h2 class="heading">Latest Projects</h2>
+                        <div class="content">
+
+                            <hr/>
+                            {% for article in img_art_list %}
+                            <div class="item row">
+                                <a class="col-md-4 col-sm-4 col-xs-12" href="#website-templates/responsive-bootstrap-theme-mobile-apps-atom/" target="_blank">
+                                    {% if article.images %}
+                                    <img class="img-responsive project-image" style="width:240px;height: 150px" src="{{ article.images.url | default_if_none:'#' }}" />
+                                    {% endif %}
+                                </a>
+                                <div class="desc col-md-8 col-sm-8 col-xs-12">
+                                    <h3 class="title"><a href="{{ article.get_pk_url }}" target="_blank">{{ article.title}}</a></h3>
+                                    <p>{{ article.excerpt}}</p>
+                                    <p style="color:#8B8386"><span><i class="fa fa-comments"></i> 4</span> &nbsp <span><i class="fa fa-eye"></i> {{ article.views }}</span>&nbsp &nbsp &nbsp  <span><i class="fa fa-calendar"></i> {{ article.create_time |date:"Y-m-d H:i:s"}}</span></p>
+                                </div><!--//desc-->
+                            </div><!--//item-->
+                            {% endfor %}
+
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
+                </section><!--//section-->
+
+                <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
+
+                <section class="projects section">
+                    <div class="section-inner">
+                        <h2 class="heading">Other Projects</h2>
+                        <div class="content">
+                            {% for article in art_lsit %}
+                            <div class="item">
+                                <h3 class="title"><a href="{{ article.get_pk_url }}">{{ article.title}}</a> <span class="label label-theme">{{ article.tags }}</span></h3>
+                                <p class="summary">{{ article.excerpt}}</p>
+                                <p style="color:#8B8386"><span><i class="fa fa-comments"></i> 4</span> &nbsp <span><i class="fa fa-eye"></i> {{ article.views }}</span>&nbsp &nbsp &nbsp  <span><i class="fa fa-calendar"></i> {{ article.create_time |date:"Y-m-d H:i:s"}}</span></p>
+                            </div><!--//item-->
+                            {% endfor %}
+                            <a class="btn btn-cta-secondary" href="#">More on CoderWall <i class="fa fa-chevron-right"></i></a>
+
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
+                </section><!--//section-->
+
+
+            </div><!--//primary-->
+
+{% endblock %}
