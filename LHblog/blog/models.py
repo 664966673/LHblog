@@ -42,7 +42,7 @@ class BlogArticle(models.Model):
     def increase_view(self):
         self.views += 1
         self.save(update_fields=['views'])
-    def get_pk_url(self):
+    def get_absolute_url(self):
         return reverse("blog:detail", kwargs={'pk':self.pk})
     def __str__(self):
         return self.title

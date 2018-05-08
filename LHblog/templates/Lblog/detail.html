@@ -1,5 +1,5 @@
 {% extends 'Lblog/base.html' %}
-{% load staticfiles%}
+{% load static from staticfiles %}
 {% block art_list %}
     <div class="primary col-md-8 col-sm-12 col-xs-12">
 
@@ -20,13 +20,18 @@
                         </div><!--//content-->
                         <div class="commit">
 
-                            <form role="form">
+                            <form role="form"  action="{% url 'comments:art_comment' article.pk %}#c{{ cpk.pk }}" method="post">
                               <div class="form-group">
                               <br/>
                                 <label for="name">评论</label>
-                                <textarea class="form-control" rows="3"></textarea>
+                                  {% csrf_token %}
+                                  <div id="comment_text">
+                                {{ form.text }}
+                                        {{ form.text.errors }}
+                                      </div>
                               </div>
-                              <a class="btn btn-cta-secondary" href="#">发 表</a>
+                                <button type="submit" class="btn btn-cta-secondary" href="#c{{ comment.id }}">发表</button>
+
                             </form>
                         </div>
                         <br/>
@@ -34,21 +39,29 @@
                         <div class="commit-list">
                         <ul class="list-group">
                             <li class="list-group-item active" >评论列表</li>
+                            {% for comment in comment_list  %}
                             <li class="list-group-item" style="height:100%">
                                 <img src="assets/images/profile.png" style="width:50px;height:50px;margin:5px;" class="img-circle">
-                                <span style="float:right;margin-right:630px;margin-top:10px;color:#9E9D9D">moumou<p style="font-size:10px"><i class="fa fa-calendar"></i> 2018-12-09</p></span>
+                                <span style="float:right;margin-right:75%;margin-top:10px;color:#9E9D9D">{{ article.author }}<p style="font-size:10px"><i class="fa fa-calendar"></i> {{ comment.create_time }}</p></span>
 
-                                <p style="margin-left:70px">什么鬼啊？我在测试哦</p>
+                                <p style="margin-left:70px" id="c{{ comment.id }}">{{ comment.text }}</p>
                                 <br>
-                               <ul style="height:100%">
-                                <li class="list-group-item" >
-                                <img src="assets/images/profile.png" style="width:50px;height:50px;margin:5px;" class="img-circle">
+{#                               <ul style="height:100%">#}
+{#                                <li class="list-group-item" >#}
+{#                                <img src="assets/images/profile.png" style="width:50px;height:50px;margin:5px;" class="img-circle">#}
+{##}
+{#                                <span style="color:#9E9D9D">jiji<hr style="padding:10px;margin:0px"><p style="color:black;margin-left:60px">什么意思</p></span>#}
+{#                                </li>#}
+{##}
+{#                               </ul>#}
+                            </li>
+                                 {% empty %}
 
-                                <span style="color:#9E9D9D">jiji<hr style="padding:10px;margin:0px"><p style="color:black;margin-left:60px">什么意思</p></span>
+                                <li class="list-group-item" style="height:100%">
+                                    <br/><p>暂无评论!</p>
                                 </li>
 
-                               </ul>
-                            </li>
+                             {% endfor %}
 
                         </ul>
 

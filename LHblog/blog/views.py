@@ -4,6 +4,7 @@ from .models import BlogArticle,Category,Tag
 from PIL import Image
 from django.db.models import Q
 import markdown
+from comments.form import CommentForm
 # Create your views here.
 
 def index(request):
@@ -43,7 +44,17 @@ def detail(request ,pk):
                                      'markdown.extensions.codehilite',
                                      'markdown.extensions.toc',
                                   ])
-    return render(request, "Lblog/detail.html", context={'article': article})
+    form = CommentForm()
+    comment_list = article.comment_set.all()
+    cpk = comment_list.order_by('create_time').last()
+    context = {
+        'article': article,
+        'form': form,
+        'comment_list': comment_list,
+        'cpk':cpk
+
+    }
+    return render(request, 'Lblog/detail.html', context=context)
 
 def category(request, pk):
     cates = get_object_or_404(Category, pk = pk)

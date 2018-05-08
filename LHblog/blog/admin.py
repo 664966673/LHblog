@@ -6,7 +6,7 @@ class BlogArticleAdmin(admin.ModelAdmin):
     list_per_page = 10
     list_display_links = ('title', 'author')
     list_filter = ( 'author', 'category')
-    #search_fields = ()
+
     date_hierarchy = 'create_time'
 
 
