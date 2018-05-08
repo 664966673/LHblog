@@ -17,6 +17,3 @@ class Comment(models.Model):
         verbose_name_plural = "评论"
     def __str__(self):
         return self.text[:20]
-    def get_article(self):
-        return self.comment_set.all()
-    get_article.short_description = ""
