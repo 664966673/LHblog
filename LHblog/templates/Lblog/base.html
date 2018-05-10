@@ -138,7 +138,7 @@
                         <div id="rss-feeds" class="content">
                             {% get_tags as tags %}
                             {% for tag in tags  %}
-                            <a href="" class="blog-tag"><span class="label label-info" style="font-size: medium">{{ tag.name }}</span></a>&nbsp;({{ tag.blogarticle_set.count  }})
+                            <a href="" class="blog-tag"><span class="label label-info" style="font-size: medium">{{ tag.name }}({{ tag.blogarticle_set.count  }})</span></a>&nbsp;
                                 {% empty %}
                                  暂无标签！
                             {% endfor %}

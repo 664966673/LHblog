@@ -17,7 +17,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/users/admin.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="88">
@@ -49,6 +49,27 @@
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/Lblog/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="574">
+              <caret line="63" column="206" selection-start-line="63" selection-start-column="206" selection-end-line="63" selection-end-column="206" />
+              <folding>
+                <element signature="e#4202#4208#1#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/Lblog/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="140" column="161" selection-start-line="140" selection-start-column="161" selection-end-line="140" selection-end-column="161" />
             </state>
           </provider>
         </entry>
@@ -97,8 +118,6 @@
         <option value="$PROJECT_DIR$/templates/Lblog/detail.html" />
         <option value="$PROJECT_DIR$/templates/Lblog/list.html" />
         <option value="$PROJECT_DIR$/blog/templatetag/blog_tag.py" />
-        <option value="$PROJECT_DIR$/templates/Lblog/index.html" />
-        <option value="$PROJECT_DIR$/templates/Lblog/base.html" />
         <option value="$PROJECT_DIR$/blog/views.py" />
         <option value="$PROJECT_DIR$/templates/Lblog/login.html" />
         <option value="$PROJECT_DIR$/templates/Lblog/register.html" />
@@ -108,6 +127,8 @@
         <option value="$PROJECT_DIR$/users/models.py" />
         <option value="$PROJECT_DIR$/blog/models.py" />
         <option value="$PROJECT_DIR$/users/admin.py" />
+        <option value="$PROJECT_DIR$/templates/Lblog/index.html" />
+        <option value="$PROJECT_DIR$/templates/Lblog/base.html" />
       </list>
     </option>
   </component>
@@ -140,6 +161,17 @@
               <item name="LHblog" type="b2602c69:ProjectViewProjectNode" />
               <item name="LHblog" type="462c0819:PsiDirectoryNode" />
               <item name="comments" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LHblog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LHblog" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LHblog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LHblog" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="Lblog" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LHblog" type="b2602c69:ProjectViewProjectNode" />
@@ -571,21 +603,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Lblog/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="63" column="146" selection-start-line="63" selection-start-column="146" selection-end-line="63" selection-end-column="179" />
-          <folding>
-            <element signature="e#636#684#0#HTML" expanded="true" />
-            <element signature="e#758#782#0#HTML" expanded="true" />
-            <element signature="e#897#918#0#HTML" expanded="true" />
-            <element signature="e#2433#2466#0#HTML" expanded="true" />
-            <element signature="e#3027#3048#0#HTML" expanded="true" />
-            <element signature="e#4331#4352#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LHblog/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -602,16 +619,6 @@
           <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
           <folding>
             <element signature="e#630#662#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Lblog/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="102" />
-          <folding>
-            <element signature="e#7037#7043#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -706,16 +713,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/comments/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -733,6 +730,33 @@
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="12" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Lblog/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="574">
+          <caret line="63" column="206" selection-start-line="63" selection-start-column="206" selection-end-line="63" selection-end-column="206" />
+          <folding>
+            <element signature="e#4202#4208#1#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Lblog/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="140" column="161" selection-start-line="140" selection-start-column="161" selection-end-line="140" selection-end-column="161" />
         </state>
       </provider>
     </entry>
