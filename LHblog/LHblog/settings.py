@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blog',
     'markdown_deux',
     'comments',
+    'users'
 ]
 COMMENTS_APP = 'comments'
 MIDDLEWARE = [
@@ -134,3 +135,5 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+AUTH_USER_MODEL = 'users.User'

@@ -32,7 +32,7 @@
   
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>  
   
-        <!-- Latest compiled and minified JavaScript -->  
+
 
     
 </head> 
@@ -42,7 +42,7 @@
     <header class="header">
         <div class="container">                       
             
-       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">  
+       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container-fluid" style="width:72%">  
                 <!--header section -->  
                 <div class="navbar-header">  
@@ -62,27 +62,30 @@
                         <li><a href="#">Products</a></li>  
                         <li><a href="#">Blog</a></li>  
                         <li><a href="#">Support</a></li>  
-                    </ul>  
+                    </ul>
                      <form action="" class="navbar-form navbar-right">  
-                    <input type="text" placeholder="搜索" class="form-control">  
-                    <button type="submit" class="btn btn-info btn-search">  
-                        <span class="glyphicon glyphicon-search"></span>  
-                    </button>  
-                </form>  
-                </div>  
-                
-            </div>  
-        </nav>  
+                        <input type="text" placeholder="搜索" class="form-control">
+                        <button type="submit" class="btn btn-info btn-search">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                     </form>
+
+                </div>
+
+            </div>
+        </nav>
         </div><!--//container-->
     </header><!--//header-->
     
     <div class="container sections-wrapper">
+
         <div class="row">
                {% block art_list  %}
                 {% endblock art_list%}
             <!--//primary-->
             <div class="secondary col-md-4 col-sm-12 col-xs-12">
                  <aside class="info aside section">
+
                     <div class="section-inner">
                         <h2 class="heading sr-only">Basic Information</h2>
                         <div class="content">
@@ -90,6 +93,7 @@
                                 <li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span>深圳</li>
                                 <li><i class="fa fa-envelope-o"></i><span class="sr-only">Email:</span><a href="#">jameslee@website.com</a></li>
                                 <li><i class="fa fa-link"></i><span class="sr-only">Website:</span><a href="#">http://www.website.com</a></li>
+
                             </ul>
                         </div><!--//content-->  
                     </div><!--//section-inner-->                 
@@ -105,7 +109,7 @@
                             <ul class="list-unstyled">
                             {% get_cates as cates %}
                                 {% for cate in cates %}
-                                <li><i class="fa fa-align-left"></i> <a href="{% url 'blog:category' cate.pk %}">{{ cate.name }}</a></li>
+                                <li><i class="fa fa-align-left"></i> <a href="{% url 'blog:category' cate.pk %}">{{ cate.name}}（{{ cate.num_posts }}）</a></li>
                                     {% empty %}
                                     暂无标签！
                                 {% endfor %}
@@ -134,7 +138,7 @@
                         <div id="rss-feeds" class="content">
                             {% get_tags as tags %}
                             {% for tag in tags  %}
-                            <a href="" class="blog-tag"><span class="label label-info" style="font-size: medium">{{ tag.name }}</span></a>
+                            <a href="" class="blog-tag"><span class="label label-info" style="font-size: medium">{{ tag.name }}</span></a>&nbsp;({{ tag.blogarticle_set.count  }})
                                 {% empty %}
                                  暂无标签！
                             {% endfor %}

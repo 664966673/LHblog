@@ -1,0 +1,48 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<link rel="stylesheet" href="{% static  'Lblog/assets/plugins/bootstrap/css/bootstrap.min.css'%}">
+    <style>
+.col-center-block {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
+}
+</style>
+</head>
+<body style="background-color: azure">
+<div class="container">
+  <div class="row myCenter">
+
+    <div class="col-xs-12 col-md-4 col-center-block">
+      <form class="form-signin">
+        <h2 class="form-signin-heading">请登录</h2>
+          <br>
+        <label for="username" class="sr-only">用户名</label>
+        <input type="text" id="username" class="form-control" placeholder="用户名" required autofocus>
+          <br>
+        <label for="inputPassword" class="sr-only">密码</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="密码" required>
+         <br>
+          <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me">
+            记住我 </label><span style="float: right;font-size: large"><a href="">注册</a></span>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+      </form>
+
+
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

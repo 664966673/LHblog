@@ -25,6 +25,7 @@ urlpatterns = [
     path('', views.index, name = "index"),
     re_path(r'^article/(?P<pk>[0-9]+)/$', views.detail, name = "detail"),
     re_path(r'^category/(?P<pk>[0-9]+)/$', views.category, name = "category"),
-    re_path(r'^archive/(?P<year>[0-9]{4})/(?P<month>[0-9]{1,2})/$', views.archive, name = "archive")
+    re_path(r'^archive/(?P<year>[0-9]{4})/(?P<month>[0-9]{1,2})/$', views.archive, name = "archive"),
+    #path('login/', views.login, name = "login")
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

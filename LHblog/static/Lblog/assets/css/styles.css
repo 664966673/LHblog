@@ -538,7 +538,5 @@ iframe {
     width:100%;
 }
 #comment_text textarea{
-    height:1000px;
-    width:1000px;
-    background:red;
+   
 }

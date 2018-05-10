@@ -73,3 +73,6 @@ def archive(request, year, month):
                                                        'year':year,
                                                        'month':month
                                                        })
+
+def login(request):
+    return  render(request, "Lblog/login.html")
