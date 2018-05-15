@@ -7,16 +7,16 @@
             <div class="primary col-md-8 col-sm-12 col-xs-12">
                
 
-                <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
+
 
                 <section class="projects section">
                     <div class="section-inner">
-                        <h2 class="heading">{% if  cates %}{{ cates.name }}{% else %}{{ year }}年{{ month }}月{% endif %}</h2>
+                        <h2 class="heading">{% if cates %}类别：{{ cates.name }}{% else %}{{ year }}年{{ month }}月{% endif %}</h2>
                         <div class="content">
-                            {% for article in article_list %}
+                            {% for article in art_List %}
                                 <hr>
                             <div class="item">
-                                <h3 class="title"><a href="{{ article.get_absolute_url }}">{{ article.title}}</a> <span class="label label-theme">{{ article.category.name }}{{ article.tags.name }}</span></h3>
+                                <h3 class="title"><a href="{{ article.get_absolute_url }}">{{ article.title}}</a> {% for tag in article.tags.all %}<span class="label label-theme">{{ tag.name }}</span>&nbsp;{% endfor %}</h3>
                                 <p class="summary">{{ article.excerpt}}</p>
                                 <p style="color:#8B8386"><span><i class="fa fa-comments"></i> &nbsp{{ article.comment_set.count }}</span> &nbsp <span><i class="fa fa-eye"></i> {{ article.views }}</span>&nbsp &nbsp &nbsp  <span><i class="fa fa-calendar"></i> {{ article.create_time |date:"Y-m-d H:i:s"}}</span></p>
                             </div><!--//item-->
@@ -24,7 +24,20 @@
                                 {% empty %}
                                 没有文章
                             {% endfor %}
-
+                            {% if is_paginated %}
+                            <div class="pagination-simple">
+                              <!-- 如果当前页还有上一页，显示一个上一页的按钮 -->
+                              {% if page_obj.has_previous %}
+                                <a href="?page={{ page_obj.previous_page_number }}">上一页</a>
+                              {% endif %}
+                              <!-- 显示当前页面信息 -->
+                              <span class="current">第 {{ page_obj.number }} 页 / 共 {{ paginator.num_pages }} 页</span>
+                              <!-- 如果当前页还有下一页，显示一个下一页的按钮 -->
+                              {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.next_page_number }}">下一页</a>
+                              {% endif %}
+                            </div>
+                            {% endif %}
 
                         </div><!--//content-->
                     </div><!--//section-inner-->

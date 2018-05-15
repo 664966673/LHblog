@@ -8,7 +8,7 @@
                 <section class="projects section">
                     <div class="section-inner">
                         <h2 class="heading">《{{ article.title }}》</h2>
-                        <p style="color:#8B8386"><span><i class="fa fa-comments"></i> 4</span> &nbsp <span><i class="fa fa-eye"></i> {{ article.views }}</span>&nbsp &nbsp &nbsp  <span><i class="fa fa-calendar"></i> {{ article.create_time | date:"Y-m-d H:i:s"}}</span></p>
+                        <p style="color:#8B8386"><span><i class="fa fa-comments"></i> {{ article.comment_set.count }}</span> &nbsp <span><i class="fa fa-eye"></i> {{ article.views }}</span>&nbsp &nbsp &nbsp  <span><i class="fa fa-calendar"></i> {{ article.create_time | date:"Y-m-d H:i:s"}}</span></p>
                         <div class="content">
                             <p>
 
@@ -18,17 +18,23 @@
 
 
                         </div><!--//content-->
-                        <div class="commit">
 
-                            <form role="form"  action="{% url 'comments:art_comment' article.pk %}#c{{ cpk.pk }}" method="post">
+                        <div class="commit">
+                            <hr/>
+                            <form role="form" id="com_text" action="{% url 'comments:art_comment' article.pk %}#c{{ cpk }}" method="post">
                               <div class="form-group">
                               <br/>
                                 <label for="name">评论</label>
                                   {% csrf_token %}
-                                  <div id="comment_text">
-                                {{ form.text }}
-                                        {{ form.text.errors }}
-                                      </div>
+                                  {% if user.is_authenticated %}
+
+                                      <div id="comment_text">
+                                             {{ form.text }}
+                                            {{ form.text.errors }}
+                                          </div>
+                                     {% else %}
+                                    <p>请<a href="{% url "social:begin" "weibo" %}?next={{ request.path }}#com_text" style="font-weight: bold">登录</a>后评论</p>
+                                {% endif %}
                               </div>
                                 <button type="submit" class="btn btn-cta-secondary" href="#c{{ comment.id }}">发表</button>
 
@@ -38,14 +44,19 @@
                         <br/>
                         <div class="commit-list">
                         <ul class="list-group">
-                            <a href="">Google+</a>
-                            <li class="list-group-item active" >评论列表</li>
-                            {% for comment in comment_list  %}
-                            <li class="list-group-item" style="height:100%">
-                                <img src="assets/images/profile.png" style="width:50px;height:50px;margin:5px;" class="img-circle">
-                                <span style="float:right;margin-right:75%;margin-top:10px;color:#9E9D9D">{{ article.author }}<p style="font-size:10px"><i class="fa fa-calendar"></i> {{ comment.create_time }}</p></span>
 
-                                <p style="margin-left:70px" id="c{{ comment.id }}">{{ comment.text }}</p>
+
+                            <li class="list-group-item active" >评论列表</li>
+
+                            {% for comment in comment_list  %}
+
+                            <li class="list-group-item" style="height:100%"  id="c{{ comment.id }}">
+                                <img src="{{userinfo}}" style="width:50px;height:50px;margin:5px;" class="img-circle">
+                                <span style="float:right;margin-right:75%;margin-top:10px;color:#9E9D9D">{% if not comment.author.first_name%}<span style="color: red;font-weight: bold">[博主]</span>{% endif %}
+                                    {{comment.author.first_name}}<p style="font-size:10px"><i class="fa fa-calendar"></i> {{ comment.create_time }}</p></span>
+
+                                <p style="margin-left:70px">{{ comment.text }}-</p>
+
                                 <br>
 {#                               <ul style="height:100%">#}
 {#                                <li class="list-group-item" >#}
