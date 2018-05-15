@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'blog',
     'markdown_deux',
     'comments',
-    'users'
+    'users',
+    'social_django',
 ]
 COMMENTS_APP = 'comments'
 MIDDLEWARE = [
@@ -53,6 +54,25 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.weibo.WeiboOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    'social_core.pipeline.user.create_user',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+    'social_core.pipeline.social_auth.associate_by_email',
+)
+SOCIAL_AUTH_WEIBO_KEY = '1609196230'
+SOCIAL_AUTH_WEIBO_SECRET = '28f87bc36c53327cf96b59eb2358e557'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 ROOT_URLCONF = 'LHblog.urls'
 
 TEMPLATES = [
@@ -66,6 +86,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
             'libraries': {
                 'blog_tag': 'blog.templatetag.blog_tag',
