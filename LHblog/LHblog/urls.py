@@ -22,6 +22,7 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('', include('comments.urls')),
     path('', include('social_django.urls', namespace='social')),
-    re_path(r'user/',include('django.contrib.auth.urls'))
+    re_path(r'user/',include('django.contrib.auth.urls')),
+    re_path(r'^search/', include('haystack.urls'))
 
 ]

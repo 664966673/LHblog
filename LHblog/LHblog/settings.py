@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'comments',
     'users',
     'social_django',
+    'haystack'
 ]
 COMMENTS_APP = 'comments'
 MIDDLEWARE = [
@@ -59,6 +60,7 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.weibo.WeiboOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
+
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
     'social_core.pipeline.social_auth.social_uid',
@@ -70,10 +72,21 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.user.user_details',
     'social_core.pipeline.social_auth.associate_by_email',
 )
+
 SOCIAL_AUTH_WEIBO_KEY = '1609196230'
 SOCIAL_AUTH_WEIBO_SECRET = '28f87bc36c53327cf96b59eb2358e557'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 ROOT_URLCONF = 'LHblog.urls'
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'blog.whoosh_cn_backends.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    },
+}
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 5
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
 
 TEMPLATES = [
     {

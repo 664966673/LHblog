@@ -1,0 +1,50 @@
+{% extends 'Lblog/base.html' %}
+{% load static from staticfiles %}
+{% load highlight %}
+{% block art_list  %}
+
+
+            <div class="primary col-md-8 col-sm-12 col-xs-12">
+
+
+
+
+                <section class="projects section">
+                    <div class="section-inner">
+                        <h2 class="heading">搜索结果</h2>
+                        <div class="content">
+                            {% if query %}
+                                {% for result in page.object_list %}
+                                    <hr>
+                                <div class="item">
+                                    <h3 class="title"><a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a> {% for tag in result.object.tags.all %}<span class="label label-theme">{{ tag.name }}</span>&nbsp;{% endfor %}</h3>
+                                    <p class="summary">{% highlight result.object.content with query   %}。</p>
+                                    <p style="color:#8B8386"><span><i class="fa fa-comments"></i> &nbsp{{result.object.comment_set.count }}</span> &nbsp <span><i class="fa fa-eye"></i> {{ result.object.views }}</span>&nbsp &nbsp &nbsp  <span><i class="fa fa-calendar"></i> {{ result.object.create_time |date:"Y-m-d"}}</span>&nbsp;<span class="label label-theme" style="background-color: #5bc0de">{{ result.object.category.name }}</span></p>
+                                </div><!--//item-->
+
+                                    {% empty %}
+                                    没有文章
+                                {% endfor %}
+                                {% if page.has_previous or page.has_next %}
+                                    <div>
+
+                                        {% if page.has_previous %}
+                                            <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; 上一页
+                                        {% if page.has_previous %}</a>{% endif %}
+                                       &nbsp; <span class="current">第 {{ page.number }} 页 / 共 {{ paginator.num_pages }} 页</span> &nbsp;
+                                        {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}下一页
+                                        &raquo;{% if page.has_next %}</a>{% endif %}
+                                    </div>
+                                {% endif %}
+
+                            {% else %}
+                                请输入搜索关键词，例如 django
+                            {% endif %}
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
+                </section><!--//section-->
+
+
+            </div><!--//primary-->
+
+{% endblock %}
